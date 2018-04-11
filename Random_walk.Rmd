@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Random walk with Drift
+
+$x_t$=$\delta$+$x_t-_1$ +$\omega_t$
+for t=1,2,3,..... with the condition $x_0$ =0 and $\omega_t$ is white noise.
+The constant $\delta$ is called drift.
+
+```{r}
+set.seed(12)
+#White noise 
+w=rnorm(100,0,1)
+
+#Random walk without drift
+x=cumsum(w)  #cummulative sum
+
+#Random walk with drift 0.5
+wd=w+0.5
+xd=cumsum(wd)
+
+plot.ts(xd,main="random Walk",col="red",ylim=c(-10,60))
+lines(x)
+lines(.5*(1:200), lty="dashed") 
+
+
+```
+
+
